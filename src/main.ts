@@ -1,23 +1,14 @@
-import { App, Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
+import { App } from 'aws-cdk-lib';
 
-export class MyStack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps = {}) {
-    super(scope, id, props);
-
-    // define resources here...
-  }
-}
-
-// for development, use account/region from cdk cli
-const devEnv = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
-};
+import { VpcWithNatInstanceStack } from './lib/vpc-stack';
 
 const app = new App();
 
-new MyStack(app, 'aws-cdk-public-demo-dev', { env: devEnv });
-// new MyStack(app, 'aws-cdk-public-demo-prod', { env: prodEnv });
-
-app.synth();
+new VpcWithNatInstanceStack(app, 'VpcDevStack', {
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION,
+  },
+  name: 'vpc-dev',
+  cidr: '10.0.0.0/16',
+});

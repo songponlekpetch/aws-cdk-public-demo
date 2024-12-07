@@ -1,6 +1,6 @@
 import { awscdk } from 'projen';
 const project = new awscdk.AwsCdkTypeScriptApp({
-  cdkVersion: '2.1.0',
+  cdkVersion: '2.162.1',
   defaultReleaseBranch: 'main',
   name: 'aws-cdk-public-demo',
   projenrcTs: true,
@@ -10,4 +10,8 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
+
+project.addDeps('@aws-quickstart/eks-blueprints@1.16.2');
+project.gitignore.exclude('.env', 'cdk.context.json');
+
 project.synth();

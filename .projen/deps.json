@@ -20,7 +20,7 @@
     },
     {
       "name": "aws-cdk",
-      "version": "^2.1.0",
+      "version": "^2.162.1",
       "type": "build"
     },
     {
@@ -66,8 +66,13 @@
       "type": "build"
     },
     {
+      "name": "@aws-quickstart/eks-blueprints",
+      "version": "1.16.2",
+      "type": "runtime"
+    },
+    {
       "name": "aws-cdk-lib",
-      "version": "^2.1.0",
+      "version": "^2.162.1",
       "type": "runtime"
     },
     {
