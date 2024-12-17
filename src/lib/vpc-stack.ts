@@ -8,6 +8,7 @@ import {
   InstanceSize,
   NatTrafficDirection,
   SubnetType,
+  GenericLinuxImage
 } from 'aws-cdk-lib/aws-ec2';
 
 export interface VpcWithNatInstanceStackProps extends StackProps {
@@ -26,6 +27,9 @@ export class VpcWithNatInstanceStack extends Stack {
       natGatewayProvider: NatProvider.instanceV2({
         instanceType: InstanceType.of(InstanceClass.T4G, InstanceSize.NANO),
         defaultAllowedTraffic: NatTrafficDirection.OUTBOUND_ONLY,
+        machineImage: new GenericLinuxImage({
+          'ap-southeast-1': 'ami-01f4b27101396da65',
+        }),
       }),
       createInternetGateway: true,
       subnetConfiguration: [
